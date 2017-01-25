@@ -1,6 +1,6 @@
 {
   "name": "react-native-editor",
-  "description": "Hybrid Editor Based on Draft.js",
+  "description": "React Native Hybrid Editor Based on Draft.js",
   "version": "0.0.1",
   "private": true,
   "scripts": {
