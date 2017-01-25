@@ -1,0 +1,33 @@
+{
+  "name": "react-native-editor",
+  "description": "Hybrid Editor Based on Draft.js",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "run:ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "test": "jest",
+    "tsc:dev:watch": "tsc -w",
+    "clean": "rm -rf dist",
+    "dev": "npm run clean && tsc && concurrently 'npm start' 'npm run run:ios && npm run tsc:dev:watch'"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^15.0.3",
+    "@types/react-native": "^0.37.11",
+    "babel-jest": "18.0.0",
+    "babel-preset-react-native": "1.9.1",
+    "concurrently": "^3.1.0",
+    "jest": "18.1.0",
+    "react": "~15.4.0-rc.4",
+    "react-native": "0.40.0",
+    "react-test-renderer": "~15.4.0-rc.4",
+    "typescript": "^2.1.5"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
