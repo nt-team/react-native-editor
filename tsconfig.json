@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
         "moduleResolution": "node",
         "noImplicitAny": true,
@@ -10,18 +10,12 @@
         "declaration": true,
         "jsx": "react",
         "sourceMap": true,
-        "lib": [
-            "es2015.promise",
-            "es2015.collection",
-            "es5",
-            "dom"
+        "typeRoots": [
+            "./node_modules/@types"
         ]
     },
     "include": [
         "src/**/*.tsx",
         "src/**/*.ts"
-    ],
-    "exclude": [
-        "lib"
     ]
 }
