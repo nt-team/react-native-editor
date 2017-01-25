@@ -1,22 +1,27 @@
 {
     "compilerOptions": {
-        "target": "es5",
         "module": "commonjs",
-        "moduleResolution": "node",
         "noImplicitAny": true,
-        "experimentalDecorators": true,
+        "target": "es6",
+        "removeComments": true,
         "preserveConstEnums": true,
-        "outDir": "dist",
-        "declaration": true,
         "jsx": "react",
         "sourceMap": true,
-        "lib": [
-            "es2015.promise",
-            "es5",
-            "dom"
+        "outDir": "dist",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "typeRoots": [
+            "./node_modules/@types"
         ]
     },
+    "awesomeTypescriptLoaderOptions": {
+        "useWebpackText": true,
+        "forkChecker": true,
+        "useCache": true
+    },
     "include": [
-        "src/**/*.ts"
+        "./src/**/*.tsx",
+        "./src/**/*.ts"
     ]
 }

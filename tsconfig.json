@@ -20,5 +20,8 @@
     "include": [
         "src/**/*.tsx",
         "src/**/*.ts"
+    ],
+    "exclude": [
+        "lib"
     ]
 }
