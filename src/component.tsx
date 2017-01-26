@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-    WebView
+    WebView, Keyboard, Clipboard
 } from 'react-native'
 import createInvoke, { IMessager } from 'react-native-webview-invoke/native'
 
@@ -19,8 +19,18 @@ export default class RNEditor extends React.Component<RNEditorProperties, any>{
     private editorMounted = () => {
         alert('mounted')
     }
+
+    // apis
+    
+
+    // fix android
+
+    // fix ios
+
     componentWillMount() {
         this.invoke.define('editorMounted', this.editorMounted)
+        // fix android
+        this.invoke.define('getClipboardText', Clipboard.getString)
     }
     render () {
         return <WebView
