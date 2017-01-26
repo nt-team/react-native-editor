@@ -2,7 +2,7 @@
   "name": "react-native-editor-browser",
   "version": "0.0.1",
   "description": "React Webpack TypeScript Apollo Client Side Starter Kit For GraphQL APIs",
-  "main": "''",
+  "main": "dist/editor.js",
   "scripts": {
     "build:editor": "webpack --config webpack.production.config.js --progress --profile --colors",
     "build:component": "tsc",
@@ -20,7 +20,9 @@
   "homepage": "https://github.com/pinqy520/apollo-tsx-client-starter-kit#readme",
   "dependencies": {
     "@types/classnames": "0.0.32",
-    "classnames": "^2.2.5"
+    "@types/draft-js": "^0.9.0",
+    "classnames": "^2.2.5",
+    "draft-js": "^0.9.1"
   },
   "devDependencies": {
     "@types/node": "^7.0.2",
