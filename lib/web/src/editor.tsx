@@ -1,6 +1,8 @@
 import 'draft-js/dist/Draft.css'
 import * as React from 'react'
 import { Editor, EditorState } from 'draft-js'
+import invoke from 'react-native-webview-invoke/browser'
+import Native from './native'
 
 const styles = require('./index.scss')
 
@@ -18,6 +20,9 @@ export default class RNEditorBrowser extends React.Component<RNEditorBrowserProp
     }
     onEditorStateChange = (editorState: EditorState) => {
         this.setState({ editorState })
+    }
+    componentDidMount() {
+        Native.editorMounted()
     }
     render() {
         return (

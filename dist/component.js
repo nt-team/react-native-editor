@@ -6,13 +6,19 @@ class RNEditor extends React.Component {
     constructor() {
         super(...arguments);
         this.invoke = native_1.default(() => this.webview);
+        this.editorMounted = () => {
+            alert('mounted');
+        };
+    }
+    componentWillMount() {
+        this.invoke.define('editorMounted', this.editorMounted);
     }
     render() {
         return React.createElement(react_native_1.WebView, { ref: (w) => this.webview = w, source: this.props.source, bounces: !this.props.autoHeight, onMessage: this.invoke.listener });
     }
 }
 RNEditor.defaultProps = {
-    source: require('../lib/web/dist/RNEditor.html'),
+    source: { uri: 'http://localhost:8888/' },
     autoHeight: false
 };
 Object.defineProperty(exports, "__esModule", { value: true });

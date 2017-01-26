@@ -11,11 +11,17 @@ export interface RNEditorProperties {
 
 export default class RNEditor extends React.Component<RNEditorProperties, any>{
     static defaultProps = {
-        source: require('../lib/web/dist/RNEditor.html'),
+        source: {uri: 'http://localhost:8888/'}, // require('../lib/web/dist/RNEditor.html'),
         autoHeight: false
     }
     private webview: WebView
     private invoke: IMessager = createInvoke(() => this.webview)
+    private editorMounted = () => {
+        alert('mounted')
+    }
+    componentWillMount() {
+        this.invoke.define('editorMounted', this.editorMounted)
+    }
     render () {
         return <WebView
             ref={(w: any) => this.webview = w}

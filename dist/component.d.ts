@@ -7,10 +7,14 @@ export interface RNEditorProperties {
 }
 export default class RNEditor extends React.Component<RNEditorProperties, any> {
     static defaultProps: {
-        source: any;
+        source: {
+            uri: string;
+        };
         autoHeight: boolean;
     };
     private webview;
     private invoke;
+    private editorMounted;
+    componentWillMount(): void;
     render(): JSX.Element;
 }
