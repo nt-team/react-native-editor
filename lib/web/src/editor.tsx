@@ -1,4 +1,5 @@
 import 'draft-js/dist/Draft.css'
+import '../global/index.css'
 import * as React from 'react'
 import { Editor, EditorState, RichUtils, Modifier } from 'draft-js'
 import invoke from 'react-native-webview-invoke/browser'
@@ -12,11 +13,13 @@ export interface RNEditorBrowserProperties {
 
 export interface RNEditorBrowserStates {
     editorState?: EditorState
+    placeholder?: string
 }
 
 export default class RNEditorBrowser extends React.Component<RNEditorBrowserProperties, RNEditorBrowserStates> {
-    state = {
-        editorState: EditorState.createEmpty()
+    state: RNEditorBrowserStates = {
+        editorState: EditorState.createEmpty(),
+        placeholder: ''
     }
     onEditorStateChange = (editorState: EditorState) => {
         this.setState({ editorState })
@@ -40,14 +43,15 @@ export default class RNEditorBrowser extends React.Component<RNEditorBrowserProp
         }
         return 'not-handled'
     }
-    componentDidMount() {
-        Native.editorMounted()
+    async componentDidMount() {
+        const { placeholder } = await Native.editorMounted()
+        this.setState({ placeholder })
     }
     render() {
         return (
             <Editor editorState={this.state.editorState}
                 onChange={this.onEditorStateChange}
-                placeholder="test"
+                placeholder={this.state.placeholder}
                 handlePastedText={this.handlePaste}
                 handleKeyCommand={this.handleKeyCommand}
             />
