@@ -17,7 +17,8 @@ class RNEditor extends React.Component {
         this.editorMounted = () => __awaiter(this, void 0, void 0, function* () {
             alert('mounted');
             return {
-                placeholder: this.props.placeholder
+                placeholder: this.props.placeholder,
+                content: this.props.initialContent
             };
         });
         this.handleEditorHeightChange = (height) => {
@@ -27,7 +28,10 @@ class RNEditor extends React.Component {
         // apis
         this.insertImage = this.invoke.bind('editorInsertImage');
         this.insertVideo = this.invoke.bind('editorInsertVideo');
-        this.setPlaceHolder = this.invoke.bind('editorInsertVideo');
+        this.insertText = this.invoke.bind('editorInsertText');
+        this.setPlaceHolder = this.invoke.bind('editorSetPlaceHolder');
+        this.setContent = this.invoke.bind('editorSetContent');
+        this.getContent = this.invoke.bind('editorGetContent');
     }
     // fix android
     // fix ios
@@ -50,7 +54,7 @@ class RNEditor extends React.Component {
 RNEditor.defaultProps = {
     source: { uri: 'http://localhost:8888/' },
     autoHeight: false,
-    placeholder: '21111'
+    placeholder: '21111',
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = RNEditor;

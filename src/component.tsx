@@ -10,20 +10,22 @@ export interface RNEditorProperties {
     autoHeight?: boolean
     style?: React.ViewStyle
     placeholder?: string
+    initialContent?: any
 }
 
 export default class RNEditor extends React.Component<RNEditorProperties, any>{
     static defaultProps = {
         source: { uri: 'http://localhost:8888/' }, // require('../lib/web/dist/RNEditor.html'),
         autoHeight: false,
-        placeholder: '21111'
+        placeholder: '21111',
     }
     private webview: WebView
     private invoke: IMessager = createInvoke(() => this.webview)
     private editorMounted = async (): Promise<IEditorBaseInfo> => {
         alert('mounted')
         return {
-            placeholder: this.props.placeholder
+            placeholder: this.props.placeholder,
+            content: this.props.initialContent
         }
     }
     private handleEditorHeightChange = (height: number) => {
@@ -35,7 +37,10 @@ export default class RNEditor extends React.Component<RNEditorProperties, any>{
     // apis
     insertImage = this.invoke.bind<void>('editorInsertImage') as (url: string) => Promise<void>
     insertVideo = this.invoke.bind<void>('editorInsertVideo') as (url: string) => Promise<void>
-    setPlaceHolder = this.invoke.bind<void>('editorInsertVideo') as (placeholder: string) => Promise<void>
+    insertText = this.invoke.bind<void>('editorInsertText') as (text: string) => Promise<void>
+    setPlaceHolder = this.invoke.bind<void>('editorSetPlaceHolder') as (placeholder: string) => Promise<void>
+    setContent = this.invoke.bind<void>('editorSetContent') as (content: any) => Promise<void>
+    getContent = this.invoke.bind<void>('editorGetContent') as () => Promise<any>
 
     // fix android
 

@@ -1,7 +1,7 @@
 import 'draft-js/dist/Draft.css'
 import '../global/index.css'
 import * as React from 'react'
-import { Editor, EditorState, RichUtils, Modifier } from 'draft-js'
+import { Editor, EditorState, RichUtils, Modifier, convertToRaw, convertFromRaw, RawDraftContentState, CompositeDecorator } from 'draft-js'
 import invoke from 'react-native-webview-invoke/browser'
 import Native from './native'
 
@@ -18,11 +18,21 @@ export interface RNEditorBrowserStates {
 
 export default class RNEditorBrowser extends React.Component<RNEditorBrowserProperties, RNEditorBrowserStates> {
     state: RNEditorBrowserStates = {
-        editorState: EditorState.createEmpty(),
+        editorState: EditorState.createEmpty(this.composite),
         placeholder: ''
     }
+    composite = new CompositeDecorator([])
     onEditorStateChange = (editorState: EditorState) => {
         this.setState({ editorState })
+    }
+    getContent = () => convertToRaw(this.state.editorState.getCurrentContent())
+    setContent = (content: any) => {
+        if (content) {
+            const contentState = convertFromRaw(content)
+            this.setState({
+                editorState: EditorState.createWithContent(contentState, this.composite)
+            })
+        }
     }
     handlePaste = (text: string) => {
         // fix android
@@ -44,8 +54,9 @@ export default class RNEditorBrowser extends React.Component<RNEditorBrowserProp
         return 'not-handled'
     }
     async componentDidMount() {
-        const { placeholder } = await Native.editorMounted()
+        const { placeholder, content } = await Native.editorMounted()
         this.setState({ placeholder })
+        this.setContent(content)
     }
     render() {
         return (
