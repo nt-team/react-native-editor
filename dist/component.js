@@ -41,6 +41,9 @@ class RNEditor extends React.Component {
         this.invoke.define('editorHeightChange', this.handleEditorHeightChange);
         // fix android
         this.invoke.define('getClipboardText', react_native_1.Clipboard.getString);
+        this.insertImage('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1486098973&di=9f8132ec90dd9de2ddbf405bf91dcedd&imgtype=jpg&er=1&src=http%3A%2F%2Fi4.piimg.com%2F11340%2F7f638e192b9079e6.jpg');
+        this.insertText('hjajajsetset');
+        this.insertVideo('http://techslides.com/demos/sample-videos/small.mp4');
     }
     componentWillReceiveProps(nextProps) {
         if (this.props.placeholder !== nextProps.placeholder) {
@@ -52,7 +55,7 @@ class RNEditor extends React.Component {
     }
 }
 RNEditor.defaultProps = {
-    source: { uri: 'http://localhost:8888/' },
+    source: require('../lib/web/dist/RNEditor.html'),
     autoHeight: false,
     placeholder: '21111',
 };

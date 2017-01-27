@@ -10,9 +10,7 @@ export interface RNEditorProperties {
 }
 export default class RNEditor extends React.Component<RNEditorProperties, any> {
     static defaultProps: {
-        source: {
-            uri: string;
-        };
+        source: any;
         autoHeight: boolean;
         placeholder: string;
     };

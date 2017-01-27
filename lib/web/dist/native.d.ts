@@ -1,4 +1,6 @@
+import { IEditorBaseInfo } from './models';
 declare const RN: {
-    editorMounted: (...args: any[]) => Promise<{}>;
+    editorMounted: () => Promise<IEditorBaseInfo>;
+    getClipboardText: (...args: any[]) => Promise<{}>;
 };
 export default RN;
