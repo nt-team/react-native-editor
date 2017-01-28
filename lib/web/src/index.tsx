@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './editor';
 
-render(<AppContainer><App /></AppContainer>, document.querySelector("#app"));
+render(<AppContainer><App initialHeight={20} /></AppContainer>, document.querySelector("#app"));
 
 var module: any = module
 
@@ -13,7 +13,7 @@ if (module && module['hot']) {
         const App = require('./editor').default;
         render(
             <AppContainer>
-                <App />
+                <App initialHeight={20} />
             </AppContainer>,
             document.querySelector("#app")
         );

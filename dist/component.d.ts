@@ -8,11 +8,19 @@ export interface RNEditorProperties {
     placeholder?: string;
     initialContent?: any;
 }
-export default class RNEditor extends React.Component<RNEditorProperties, any> {
+export interface RNEditorState {
+    height?: number;
+}
+export default class RNEditor extends React.Component<RNEditorProperties, RNEditorState> {
     static defaultProps: {
-        source: any;
+        source: {
+            uri: string;
+        };
         autoHeight: boolean;
         placeholder: string;
+    };
+    state: {
+        height: number;
     };
     private webview;
     private invoke;
@@ -24,6 +32,8 @@ export default class RNEditor extends React.Component<RNEditorProperties, any> {
     setPlaceHolder: (placeholder: string) => Promise<void>;
     setContent: (content: any) => Promise<void>;
     getContent: () => Promise<any>;
+    setAutoHeight: (autoHeight: boolean) => Promise<void>;
+    private getWebViewStyle;
     componentWillMount(): void;
     componentWillReceiveProps(nextProps: RNEditorProperties): void;
     render(): JSX.Element;

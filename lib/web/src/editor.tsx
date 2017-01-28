@@ -1,6 +1,7 @@
 import 'draft-js/dist/Draft.css'
 import '../global/index.css'
 import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import {
     Editor, EditorState, RichUtils, Modifier,
     convertToRaw, convertFromRaw, RawDraftContentState,
@@ -12,7 +13,7 @@ import Native from './native'
 const styles = require('./index.scss')
 
 export interface RNEditorBrowserProperties {
-
+    initialHeight?: number
 }
 
 export interface RNEditorBrowserStates {
@@ -21,13 +22,18 @@ export interface RNEditorBrowserStates {
 }
 
 export default class RNEditorBrowser extends React.Component<RNEditorBrowserProperties, RNEditorBrowserStates> {
+    static defaultProps: RNEditorBrowserProperties = {
+        initialHeight: 0
+    }
     state: RNEditorBrowserStates = {
         editorState: EditorState.createEmpty(this.composite),
         placeholder: ''
     }
-    composite = new CompositeDecorator([])
+    private composite = new CompositeDecorator([])
+    private autoHeight = false
+    private editor: Editor
     private onEditorStateChange = (editorState: EditorState) => {
-        this.setState({ editorState })
+        this.setState({ editorState }, this.measureEditorHeight)
     }
     private insertMedia = (src: string, type: string) => {
         const { editorState } = this.state
@@ -51,6 +57,8 @@ export default class RNEditorBrowser extends React.Component<RNEditorBrowserProp
         }
     }
     setPlaceHolder = (placeholder: string) => this.setState({ placeholder })
+    setAutoHeight = (autoHeight: boolean) => this.autoHeight = autoHeight
+
     insertImage = (uri: string) => this.insertMedia(uri, 'image')
     insertVideo = (uri: string) => this.insertMedia(uri, 'video')
     insertText = (text: string) => {
@@ -59,6 +67,23 @@ export default class RNEditorBrowser extends React.Component<RNEditorBrowserProp
                 editorState: replaceText(this.state.editorState, text)
             })
         }
+    }
+    private lastEditorHeight = 0
+    private lastEditorHeightTimer: any
+    measureEditorHeight = () => {
+        this.autoHeight && window.scrollTo(0, 0)
+
+        clearTimeout(this.lastEditorHeightTimer)
+        this.lastEditorHeightTimer = setTimeout(() => {
+            const $editor = ReactDOM.findDOMNode(this.editor)
+            if ($editor) {
+                const height = $editor.clientHeight
+                if (height !== this.lastEditorHeight) {
+                    Native.editorHeightChange(height + this.props.initialHeight)
+                    this.lastEditorHeight = height
+                }
+            }
+        }, 0);
     }
     handlePaste = (text: string) => {
         // fix android
@@ -86,16 +111,20 @@ export default class RNEditorBrowser extends React.Component<RNEditorBrowserProp
         invoke.define('editorSetPlaceHolder', this.setPlaceHolder)
         invoke.define('editorSetContent', this.setContent)
         invoke.define('editorGetContent', this.getContent)
+        invoke.define('editorSetAutoHeight', this.setAutoHeight)
     }
     async componentDidMount() {
         this.registerAPIs()
-        const { placeholder, content } = await Native.editorMounted()
+        const { placeholder, content, autoHeight } = await Native.editorMounted()
         this.setPlaceHolder(placeholder)
         this.setContent(content)
+        this.setAutoHeight(autoHeight)
+        this.measureEditorHeight()
     }
     render() {
         return (
-            <Editor editorState={this.state.editorState}
+            <Editor ref={(e: any) => this.editor = e}
+                editorState={this.state.editorState}
                 onChange={this.onEditorStateChange}
                 placeholder={this.state.placeholder}
                 handlePastedText={this.handlePaste}

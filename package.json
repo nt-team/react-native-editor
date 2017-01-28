@@ -10,7 +10,8 @@
     "test": "jest",
     "tsc:dev:watch": "tsc -w",
     "clean": "rm -rf dist",
-    "dev": "npm run clean && tsc && concurrently 'npm start' 'npm run run:ios && npm run tsc:dev:watch'"
+    "dev": "npm run clean && tsc && concurrently 'npm start' 'npm run run:ios && npm run tsc:dev:watch'",
+    "xcode": "npm run clean && tsc && concurrently 'npm start' 'npm run tsc:dev:watch'"
   },
   "peerDependencies": {
     "react": "*",
@@ -32,6 +33,6 @@
     "preset": "react-native"
   },
   "dependencies": {
-    "react-native-webview-invoke": "^0.3.9"
+    "react-native-webview-invoke": "^0.3.10"
   }
 }

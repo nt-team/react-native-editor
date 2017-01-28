@@ -13,51 +13,71 @@ const native_1 = require("react-native-webview-invoke/native");
 class RNEditor extends React.Component {
     constructor() {
         super(...arguments);
+        this.state = {
+            height: 0
+        };
         this.invoke = native_1.default(() => this.webview);
+        // native apis
         this.editorMounted = () => __awaiter(this, void 0, void 0, function* () {
-            alert('mounted');
+            // alert('mo')
             return {
                 placeholder: this.props.placeholder,
-                content: this.props.initialContent
+                content: this.props.initialContent,
+                autoHeight: this.props.autoHeight
             };
         });
         this.handleEditorHeightChange = (height) => {
             if (this.props.autoHeight) {
+                console.log(height);
+                this.setState({ height });
             }
         };
-        // apis
+        // web apis
         this.insertImage = this.invoke.bind('editorInsertImage');
         this.insertVideo = this.invoke.bind('editorInsertVideo');
         this.insertText = this.invoke.bind('editorInsertText');
         this.setPlaceHolder = this.invoke.bind('editorSetPlaceHolder');
         this.setContent = this.invoke.bind('editorSetContent');
         this.getContent = this.invoke.bind('editorGetContent');
+        this.setAutoHeight = this.invoke.bind('editorSetAutoHeight');
+        // fix android
+        // fix ios
+        // others
+        this.getWebViewStyle = () => {
+            const webviewStyle = [];
+            if (this.props.autoHeight) {
+                webviewStyle.push({
+                    height: this.state.height
+                });
+            }
+            webviewStyle.push(this.props.style);
+            return webviewStyle;
+        };
     }
-    // fix android
-    // fix ios
     // component
     componentWillMount() {
         this.invoke.define('editorMounted', this.editorMounted);
         this.invoke.define('editorHeightChange', this.handleEditorHeightChange);
         // fix android
         this.invoke.define('getClipboardText', react_native_1.Clipboard.getString);
-        this.insertImage('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1486098973&di=9f8132ec90dd9de2ddbf405bf91dcedd&imgtype=jpg&er=1&src=http%3A%2F%2Fi4.piimg.com%2F11340%2F7f638e192b9079e6.jpg');
-        this.insertText('hjajajsetset');
-        this.insertVideo('http://techslides.com/demos/sample-videos/small.mp4');
     }
     componentWillReceiveProps(nextProps) {
         if (this.props.placeholder !== nextProps.placeholder) {
             this.setPlaceHolder(nextProps.placeholder);
         }
+        if (this.props.autoHeight !== nextProps.autoHeight) {
+            this.setAutoHeight(nextProps.autoHeight);
+        }
     }
     render() {
-        return React.createElement(react_native_1.WebView, { ref: (w) => this.webview = w, source: this.props.source, style: this.props.style, bounces: !this.props.autoHeight, onMessage: this.invoke.listener });
+        return (React.createElement(react_native_1.View, { style: this.getWebViewStyle() },
+            React.createElement(react_native_1.WebView, { ref: (w) => this.webview = w, source: this.props.source, bounces: !this.props.autoHeight, scrollEnabled: !this.props.autoHeight, automaticallyAdjustContentInsets: !this.props.autoHeight, onMessage: this.invoke.listener, mediaPlaybackRequiresUserAction: true })));
     }
 }
 RNEditor.defaultProps = {
-    source: require('../lib/web/dist/RNEditor.html'),
+    source: { uri: 'http://localhost:8888/' },
     autoHeight: false,
-    placeholder: '21111',
+    placeholder: '',
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = RNEditor;
