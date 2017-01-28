@@ -35,9 +35,9 @@ export default class RNEditorBrowser extends React.Component<RNEditorBrowserProp
     private onEditorStateChange = (editorState: EditorState) => {
         this.setState({ editorState }, this.measureEditorHeight)
     }
-    private insertMedia = (src: string, type: string) => {
+    private insertMedia = (data: any, type: string) => {
         const { editorState } = this.state
-        const entityKey = Entity.create(type, 'IMMUTABLE', { src })
+        const entityKey = Entity.create(type, 'IMMUTABLE', data)
 
         this.setState({
             editorState: AtomicBlockUtils.insertAtomicBlock(
@@ -59,8 +59,8 @@ export default class RNEditorBrowser extends React.Component<RNEditorBrowserProp
     setPlaceHolder = (placeholder: string) => this.setState({ placeholder })
     setAutoHeight = (autoHeight: boolean) => this.autoHeight = autoHeight
 
-    insertImage = (uri: string) => this.insertMedia(uri, 'image')
-    insertVideo = (uri: string) => this.insertMedia(uri, 'video')
+    insertImage = (uri: string) => this.insertMedia({ src: uri }, 'image')
+    insertVideo = (uri: string) => this.insertMedia({ src: uri }, 'video')
     insertText = (text: string) => {
         if (typeof text === 'string') {
             this.setState({

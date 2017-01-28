@@ -39,7 +39,6 @@ export default class RNEditor extends React.Component<RNEditorProperties, RNEdit
     }
     private handleEditorHeightChange = (height: number) => {
         if (this.props.autoHeight) {
-            console.log(height)
             this.setState({ height })
         }
     }
