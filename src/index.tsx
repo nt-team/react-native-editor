@@ -16,7 +16,7 @@ import RNEditor from './component'
 export default class RNEditorDev extends React.Component<any, any> {
   render() {
     return (
-      <ScrollView><RNEditor style={styles.editor} placeholder="这里是placeholder" autoHeight /></ScrollView>
+      <RNEditor style={styles.editor} placeholder="这里是placeholder" />
     );
   }
 }
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderWidth: 1,
     borderColor: '#000',
-    borderStyle: 'solid'
+    borderStyle: 'solid',
+    flex: 1
   } as React.ViewStyle
 });
 

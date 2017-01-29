@@ -9,8 +9,7 @@ const react_native_1 = require("react-native");
 const component_1 = require("./component");
 class RNEditorDev extends React.Component {
     render() {
-        return (React.createElement(react_native_1.ScrollView, null,
-            React.createElement(component_1.default, { style: styles.editor, placeholder: "这里是placeholder", autoHeight: true })));
+        return (React.createElement(component_1.default, { style: styles.editor, placeholder: "这里是placeholder" }));
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -20,7 +19,8 @@ const styles = react_native_1.StyleSheet.create({
         marginTop: 20,
         borderWidth: 1,
         borderColor: '#000',
-        borderStyle: 'solid'
+        borderStyle: 'solid',
+        flex: 1
     }
 });
 react_native_1.AppRegistry.registerComponent('RNEditorDev', () => RNEditorDev);

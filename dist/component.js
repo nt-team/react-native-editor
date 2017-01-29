@@ -28,7 +28,6 @@ class RNEditor extends React.Component {
         });
         this.handleEditorHeightChange = (height) => {
             if (this.props.autoHeight) {
-                console.log(height);
                 this.setState({ height });
             }
         };
