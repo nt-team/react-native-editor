@@ -10,6 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const React = require("react");
 const react_native_1 = require("react-native");
 const native_1 = require("react-native-webview-invoke/native");
+const editor_webview_1 = require("../lib/javascript/editor-webview");
+editor_webview_1.default;
 class RNEditor extends React.Component {
     constructor() {
         super(...arguments);

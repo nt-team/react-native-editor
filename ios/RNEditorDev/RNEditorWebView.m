@@ -19,8 +19,8 @@
 #import <React/RCTView.h>
 #import <React/UIView+React.h>
 
-NSString *const RCTJSNavigationScheme = @"react-js-navigation";
-NSString *const RCTJSPostMessageHost = @"postMessage";
+NSString *const RNEditorJSNavigationScheme = @"react-js-navigation";
+NSString *const RNEditorJSPostMessageHost = @"postMessage";
 
 @interface RNEditorWebView () <UIWebViewDelegate, RCTAutoInsetsProtocol>
 
@@ -198,7 +198,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
 - (BOOL)webView:(__unused UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
  navigationType:(UIWebViewNavigationType)navigationType
 {
-  BOOL isJSNavigation = [request.URL.scheme isEqualToString:RCTJSNavigationScheme];
+  BOOL isJSNavigation = [request.URL.scheme isEqualToString:RNEditorJSNavigationScheme];
   
   static NSDictionary<NSNumber *, NSString *> *navigationTypes;
   static dispatch_once_t onceToken;
@@ -240,7 +240,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
     }
   }
   
-  if (isJSNavigation && [request.URL.host isEqualToString:RCTJSPostMessageHost]) {
+  if (isJSNavigation && [request.URL.host isEqualToString:RNEditorJSPostMessageHost]) {
     NSString *data = request.URL.query;
     data = [data stringByReplacingOccurrencesOfString:@"+" withString:@" "];
     data = [data stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -295,7 +295,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
                         @"window.originalPostMessage = window.postMessage;"
                         "window.postMessage = function(data) {"
                         "window.location = '%@://%@?' + encodeURIComponent(String(data));"
-                        "};", RCTJSNavigationScheme, RCTJSPostMessageHost
+                        "};", RNEditorJSNavigationScheme, RNEditorJSPostMessageHost
                         ];
     [webView stringByEvaluatingJavaScriptFromString:source];
   }

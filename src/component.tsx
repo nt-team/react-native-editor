@@ -4,6 +4,9 @@ import {
 } from 'react-native'
 import createInvoke, { IMessager } from 'react-native-webview-invoke/native'
 import { IEditorBaseInfo } from './models'
+import EditorWebView from '../lib/javascript/editor-webview'
+
+EditorWebView
 
 export interface RNEditorProperties {
     source?: number | React.WebViewUriSource | React.WebViewHtmlSource
