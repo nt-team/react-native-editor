@@ -1,12 +1,10 @@
 import * as React from 'react'
 import {
-    WebView, Keyboard, Clipboard, View
+    Keyboard, Clipboard, View, WebView
 } from 'react-native'
 import createInvoke, { IMessager } from 'react-native-webview-invoke/native'
 import { IEditorBaseInfo } from './models'
 import EditorWebView from '../lib/javascript/editor-webview'
-
-EditorWebView
 
 export interface RNEditorProperties {
     source?: number | React.WebViewUriSource | React.WebViewHtmlSource
@@ -22,7 +20,7 @@ export interface RNEditorState {
 
 export default class RNEditor extends React.Component<RNEditorProperties, RNEditorState>{
     static defaultProps = {
-        source: { uri: 'http://localhost:8888/' }, // require('../lib/web/dist/RNEditor.html'),
+        source: require('../lib/web/dist/RNEditor.html'),//{ uri: 'http://localhost:8888/' }, // require('../lib/web/dist/RNEditor.html'),
         autoHeight: false,
         placeholder: '',
     }
@@ -89,7 +87,7 @@ export default class RNEditor extends React.Component<RNEditorProperties, RNEdit
     render() {
         return (
             <View style={this.getWebViewStyle()}>
-                <WebView
+                <EditorWebView
                     ref={(w: any) => this.webview = w}
                     source={this.props.source}
                     bounces={!this.props.autoHeight}

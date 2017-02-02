@@ -11,7 +11,6 @@ const React = require("react");
 const react_native_1 = require("react-native");
 const native_1 = require("react-native-webview-invoke/native");
 const editor_webview_1 = require("../lib/javascript/editor-webview");
-editor_webview_1.default;
 class RNEditor extends React.Component {
     constructor() {
         super(...arguments);
@@ -72,11 +71,11 @@ class RNEditor extends React.Component {
     }
     render() {
         return (React.createElement(react_native_1.View, { style: this.getWebViewStyle() },
-            React.createElement(react_native_1.WebView, { ref: (w) => this.webview = w, source: this.props.source, bounces: !this.props.autoHeight, scrollEnabled: !this.props.autoHeight, automaticallyAdjustContentInsets: !this.props.autoHeight, onMessage: this.invoke.listener, mediaPlaybackRequiresUserAction: true })));
+            React.createElement(editor_webview_1.default, { ref: (w) => this.webview = w, source: this.props.source, bounces: !this.props.autoHeight, scrollEnabled: !this.props.autoHeight, automaticallyAdjustContentInsets: !this.props.autoHeight, onMessage: this.invoke.listener, mediaPlaybackRequiresUserAction: true })));
     }
 }
 RNEditor.defaultProps = {
-    source: { uri: 'http://localhost:8888/' },
+    source: require('../lib/web/dist/RNEditor.html'),
     autoHeight: false,
     placeholder: '',
 };
