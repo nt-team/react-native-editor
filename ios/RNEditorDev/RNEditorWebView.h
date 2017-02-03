@@ -38,6 +38,10 @@ shouldStartLoadForRequest:(NSMutableDictionary<NSString *, id> *)request
 @property (nonatomic, copy) NSString *injectedJavaScript;
 @property (nonatomic, assign) BOOL scalesPageToFit;
 
+// Custom start
+@property (nonatomic, assign) BOOL hideKeyboardAccessoryView;
+// Custom End
+
 - (void)goForward;
 - (void)goBack;
 - (void)reload;

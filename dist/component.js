@@ -71,7 +71,7 @@ class RNEditor extends React.Component {
     }
     render() {
         return (React.createElement(react_native_1.View, { style: this.getWebViewStyle() },
-            React.createElement(editor_webview_1.default, { ref: (w) => this.webview = w, source: this.props.source, bounces: !this.props.autoHeight, scrollEnabled: !this.props.autoHeight, automaticallyAdjustContentInsets: !this.props.autoHeight, onMessage: this.invoke.listener, mediaPlaybackRequiresUserAction: true })));
+            React.createElement(editor_webview_1.default, { ref: (w) => this.webview = w, source: this.props.source, bounces: !this.props.autoHeight, scrollEnabled: !this.props.autoHeight, automaticallyAdjustContentInsets: !this.props.autoHeight, onMessage: this.invoke.listener, mediaPlaybackRequiresUserAction: true, hideKeyboardAccessoryView: true, keyboardDisplayRequiresUserAction: false })));
     }
 }
 RNEditor.defaultProps = {

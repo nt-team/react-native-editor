@@ -95,6 +95,8 @@ export default class RNEditor extends React.Component<RNEditorProperties, RNEdit
                     automaticallyAdjustContentInsets={!this.props.autoHeight}
                     onMessage={this.invoke.listener}
                     mediaPlaybackRequiresUserAction
+                    hideKeyboardAccessoryView
+                    keyboardDisplayRequiresUserAction={false}
                 />
             </View>
         )
