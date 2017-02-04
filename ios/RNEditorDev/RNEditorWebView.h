@@ -18,9 +18,9 @@
  * Special scheme used to pass messages to the injectedJavaScript
  * code without triggering a page load. Usage:
  *
- *   window.location.href = RCTJSNavigationScheme + '://hello'
+ *   window.location.href = RNEditorJSNavigationScheme + '://hello'
  */
-extern NSString *const RCTJSNavigationScheme;
+extern NSString *const RNEditorJSNavigationScheme;
 
 @protocol RNEditorWebViewDelegate <NSObject>
 
