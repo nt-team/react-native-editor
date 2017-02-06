@@ -62,9 +62,57 @@ node_modules/react-native-editor/lib/ios/
 |-- RNEditorWebViewManager.m
 ```
 
+## 自定义编辑器
+
 ## APIs
 
-## 自定义编辑器
+### React Native 组件
+
+| 属性 | 类型 | 说明 |  
+| -- | -- | -- |
+| placeholder | string | placeholder |
+
+用法：
+
+``` javascript
+<RNEditor placeholder="here is placeholder" />
+```
+
+---
+
+| 属性 | 类型 | 说明 |  
+| -- | -- | -- |
+| autoHeight | boolean | 是否自动适应高度 |
+
+用法：
+
+``` javascript
+<RNEditor autoHeight />
+```
+
+---
+
+| 属性 | 类型 | 说明 |  
+| -- | -- | -- |
+| initialContent | Draft.RawContentBlock | 初始内容 |
+
+用法：
+
+``` javascript
+<RNEditor initialContent={initialContent} />
+```
+
+---
+
+| 属性 | 类型 | 说明 |  
+| -- | -- | -- |
+| style | React.ViewStyle | 编辑器容器样式 |
+
+用法：
+
+``` javascript
+<RNEditor style={{flex: 1}} />
+```
 
 
 
