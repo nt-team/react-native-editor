@@ -21,11 +21,12 @@ import RNEditor from 'react-native'
 使用组件
 
 ``` javascript
-class RNEditorDev
+class RNETest
   extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView
+        style={{flex: 1}}
         contentContainerStyle={{ flex: 1 }}
         keyboardVerticalOffset={0}>
         <RNEditor
@@ -35,6 +36,16 @@ class RNEditorDev
     );
   }
 }
+
+const styles = StyleSheet.create({
+  editor: {
+    marginTop: 20,
+    borderWidth: 1,
+    borderColor: '#000',
+    borderStyle: 'solid',
+    flex: 1
+  }
+});
 ```
 
 ### 备注
