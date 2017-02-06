@@ -1,6 +1,6 @@
 # react-native-editor
 
-`react-native-editor`是一个React Native的富文本编辑器组件，基于`draft-js`和`react-native-webview-invoke`的Hybrid方案实现。
+`react-native-editor`是一个React Native的富文本编辑器组件，基于[`draft-js`](https://github.com/facebook/draft-js)和[`react-native-webview-invoke`](https://github.com/pinqy520/react-native-webview-invoke)的Hybrid方案实现。
 
 ![image](https://cloud.githubusercontent.com/assets/5719833/22633863/e2ccf80a-ec5f-11e6-92b9-509e9420f70f.png)
 
@@ -15,7 +15,7 @@ npm install github:pinqy520/react-native-editor --save
 引入`RNEditor`组件
 
 ``` javascript
-import RNEditor from 'react-native'
+import RNEditor from 'react-native-editor'
 ```
 
 使用组件
