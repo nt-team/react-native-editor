@@ -68,51 +68,42 @@ node_modules/react-native-editor/lib/ios/
 
 ### React Native 组件
 
-| 属性 | 类型 | 说明 |  
-| -- | -- | -- |
-| placeholder | string | placeholder |
-
-用法：
+#### 属性：placeholder
 
 ``` javascript
 <RNEditor placeholder="here is placeholder" />
 ```
 
----
+- 类型：string
+- 说明：placeholder
 
-| 属性 | 类型 | 说明 |  
-| -- | -- | -- |
-| autoHeight | boolean | 是否自动适应高度 |
-
-用法：
+#### 属性：autoHeight
 
 ``` javascript
 <RNEditor autoHeight />
 ```
 
----
+- 类型：boolean
+- 说明：是否自动适应高度
 
-| 属性 | 类型 | 说明 |  
-| -- | -- | -- |
-| initialContent | Draft.RawContentBlock | 初始内容 |
-
-用法：
+#### 属性：initialContent
 
 ``` javascript
 <RNEditor initialContent={initialContent} />
 ```
 
----
+- 类型：Draft.RawContentBlock
+- 说明：初始内容
 
-| 属性 | 类型 | 说明 |  
-| -- | -- | -- |
-| style | React.ViewStyle | 编辑器容器样式 |
 
-用法：
+#### 属性：style
 
 ``` javascript
 <RNEditor style={{flex: 1}} />
 ```
+
+- 类型：React.ViewStyle
+- 说明：编辑器容器样式
 
 
 
