@@ -105,6 +105,34 @@ node_modules/react-native-editor/lib/ios/
 - 类型：React.ViewStyle
 - 说明：编辑器容器样式
 
+#### 方法：insertImage(url: string)
+
+- 说明：插入图片
+
+#### 方法：insertVideo(url: string)
+
+- 说明：插入视频
+
+#### 方法：insertText(text: string)
+
+- 说明：插入内容
+
+#### 方法：setContent(content: Draft.RawContentBlock)
+
+- 说明：设置内容
+
+#### 方法：getContent(): Promise<Draft.RawContentBlock>
+
+- 说明：获取当前内容
+
+#### 方法：focus()
+
+- 说明：设置聚焦
+
+#### 方法：blur()
+
+- 说明：设置不聚焦
+
 
 
 ## TODO
