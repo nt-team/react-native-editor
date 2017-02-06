@@ -2,7 +2,6 @@
   "name": "react-native-editor",
   "description": "React Native Hybrid Editor Based on Draft.js",
   "version": "0.0.1",
-  "private": true,
   "main": "dist/component.js",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -32,6 +31,10 @@
   "jest": {
     "preset": "react-native"
   },
+  "files": [
+    "dist",
+    "lib"
+  ],
   "dependencies": {
     "react-native-webview-invoke": "^0.3.10"
   }
