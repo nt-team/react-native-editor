@@ -22,9 +22,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		4133F08E1E42367500DA212B /* RNEditorWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4133F08D1E42367500DA212B /* RNEditorWebView.m */; };
-		4133F0911E4239EF00DA212B /* RNEditorWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4133F0901E4239EF00DA212B /* RNEditorWebViewManager.m */; };
 		4141D8F61E45B314000D843F /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4141D8DF1E45B307000D843F /* libRCTCameraRoll.a */; };
+		418297011E4822A000F4A28D /* RNEditorWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 418296FE1E4822A000F4A28D /* RNEditorWebView.m */; };
+		418297021E4822A000F4A28D /* RNEditorWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 418297001E4822A000F4A28D /* RNEditorWebViewManager.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
@@ -241,11 +241,11 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNEditorDev/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNEditorDev/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		4133F0731E42364B00DA212B /* RNEditorWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNEditorWebView.h; path = RNEditorDev/RNEditorWebView.h; sourceTree = "<group>"; };
-		4133F08D1E42367500DA212B /* RNEditorWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNEditorWebView.m; path = RNEditorDev/RNEditorWebView.m; sourceTree = "<group>"; };
-		4133F08F1E4239C700DA212B /* RNEditorWebViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RNEditorWebViewManager.h; path = RNEditorDev/RNEditorWebViewManager.h; sourceTree = "<group>"; };
-		4133F0901E4239EF00DA212B /* RNEditorWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNEditorWebViewManager.m; path = RNEditorDev/RNEditorWebViewManager.m; sourceTree = "<group>"; };
 		4141D8D71E45B307000D843F /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
+		418296FD1E4822A000F4A28D /* RNEditorWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNEditorWebView.h; path = ../lib/ios/RNEditorWebView.h; sourceTree = "<group>"; };
+		418296FE1E4822A000F4A28D /* RNEditorWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNEditorWebView.m; path = ../lib/ios/RNEditorWebView.m; sourceTree = "<group>"; };
+		418296FF1E4822A000F4A28D /* RNEditorWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNEditorWebViewManager.h; path = ../lib/ios/RNEditorWebViewManager.h; sourceTree = "<group>"; };
+		418297001E4822A000F4A28D /* RNEditorWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNEditorWebViewManager.m; path = ../lib/ios/RNEditorWebViewManager.m; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -369,10 +369,10 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				4133F0731E42364B00DA212B /* RNEditorWebView.h */,
-				4133F08D1E42367500DA212B /* RNEditorWebView.m */,
-				4133F08F1E4239C700DA212B /* RNEditorWebViewManager.h */,
-				4133F0901E4239EF00DA212B /* RNEditorWebViewManager.m */,
+				418296FD1E4822A000F4A28D /* RNEditorWebView.h */,
+				418296FE1E4822A000F4A28D /* RNEditorWebView.m */,
+				418296FF1E4822A000F4A28D /* RNEditorWebViewManager.h */,
+				418297001E4822A000F4A28D /* RNEditorWebViewManager.m */,
 			);
 			name = RNEditorDev;
 			sourceTree = "<group>";
@@ -829,8 +829,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				4133F08E1E42367500DA212B /* RNEditorWebView.m in Sources */,
-				4133F0911E4239EF00DA212B /* RNEditorWebViewManager.m in Sources */,
+				418297011E4822A000F4A28D /* RNEditorWebView.m in Sources */,
+				418297021E4822A000F4A28D /* RNEditorWebViewManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

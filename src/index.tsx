@@ -9,14 +9,21 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View, ScrollView
+  View, ScrollView, KeyboardAvoidingView
 } from 'react-native'
 import RNEditor from './component'
 
-export default class RNEditorDev extends React.Component<any, any> {
+export default class RNEditorDev
+  extends React.Component<any, any> {
   render() {
     return (
-      <RNEditor style={styles.editor} placeholder="这里是placeholder" />
+      <KeyboardAvoidingView
+        contentContainerStyle={{ flex: 1 }}
+        keyboardVerticalOffset={0}>
+        <RNEditor
+          style={styles.editor}
+          placeholder="here is placeholder" />
+      </KeyboardAvoidingView>
     );
   }
 }
