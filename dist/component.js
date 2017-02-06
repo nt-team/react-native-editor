@@ -40,6 +40,8 @@ class RNEditor extends React.Component {
         this.setContent = this.invoke.bind('editorSetContent');
         this.getContent = this.invoke.bind('editorGetContent');
         this.setAutoHeight = this.invoke.bind('editorSetAutoHeight');
+        this.focus = this.invoke.bind('editorFocus');
+        this.blur = this.invoke.bind('editorBlur');
         // fix android
         // fix ios
         // others

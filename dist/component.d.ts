@@ -31,6 +31,8 @@ export default class RNEditor extends React.Component<RNEditorProperties, RNEdit
     setContent: (content: any) => Promise<void>;
     getContent: () => Promise<any>;
     setAutoHeight: (autoHeight: boolean) => Promise<void>;
+    focus: (...args: any[]) => Promise<void>;
+    blur: (...args: any[]) => Promise<void>;
     private getWebViewStyle;
     componentWillMount(): void;
     componentWillReceiveProps(nextProps: RNEditorProperties): void;

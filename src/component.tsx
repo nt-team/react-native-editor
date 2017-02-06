@@ -52,6 +52,9 @@ export default class RNEditor extends React.Component<RNEditorProperties, RNEdit
     setContent = this.invoke.bind<void>('editorSetContent') as (content: any) => Promise<void>
     getContent = this.invoke.bind<void>('editorGetContent') as () => Promise<any>
     setAutoHeight = this.invoke.bind<void>('editorSetAutoHeight') as (autoHeight: boolean) => Promise<void>
+    focus = this.invoke.bind<void>('editorFocus')
+    blur = this.invoke.bind<void>('editorBlur')
+
 
     // fix android
 
