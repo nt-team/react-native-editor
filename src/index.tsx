@@ -18,6 +18,7 @@ export default class RNEditorDev
   render() {
     return (
       <KeyboardAvoidingView
+        style={{ flex: 1 }}
         contentContainerStyle={{ flex: 1 }}
         keyboardVerticalOffset={0}>
         <RNEditor

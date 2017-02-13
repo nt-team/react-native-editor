@@ -36,5 +36,5 @@ export default class RNEditor extends React.Component<RNEditorProperties, RNEdit
     private getWebViewStyle;
     componentWillMount(): void;
     componentWillReceiveProps(nextProps: RNEditorProperties): void;
-    render(): JSX.Element;
+    render(): JSX.JSXElement;
 }

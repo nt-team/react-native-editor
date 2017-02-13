@@ -6,5 +6,5 @@
  */
 import * as React from 'react';
 export default class RNEditorDev extends React.Component<any, any> {
-    render(): JSX.Element;
+    render(): JSX.JSXElement;
 }

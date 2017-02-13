@@ -9,7 +9,8 @@ const react_native_1 = require("react-native");
 const component_1 = require("./component");
 class RNEditorDev extends React.Component {
     render() {
-        return (React.createElement(component_1.default, { style: styles.editor, placeholder: "这里是placeholder" }));
+        return (React.createElement(react_native_1.KeyboardAvoidingView, { style: { flex: 1 }, contentContainerStyle: { flex: 1 }, keyboardVerticalOffset: 0 },
+            React.createElement(component_1.default, { style: styles.editor, placeholder: "here is placeholder" })));
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
