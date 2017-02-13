@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		41CF19221E5199FA0065A9CE /* RNEditorWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF191F1E5199FA0065A9CE /* RNEditorWebView.m */; };
 		41CF19231E5199FA0065A9CE /* RNEditorWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF19211E5199FA0065A9CE /* RNEditorWebViewManager.m */; };
+		41F396551E51D7FB0035A993 /* RNEditorProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F396541E51D7FB0035A993 /* RNEditorProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,8 @@
 		41CF191F1E5199FA0065A9CE /* RNEditorWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNEditorWebView.m; sourceTree = "<group>"; };
 		41CF19201E5199FA0065A9CE /* RNEditorWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNEditorWebViewManager.h; sourceTree = "<group>"; };
 		41CF19211E5199FA0065A9CE /* RNEditorWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNEditorWebViewManager.m; sourceTree = "<group>"; };
+		41F396531E51D7FB0035A993 /* RNEditorProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNEditorProxy.h; sourceTree = "<group>"; };
+		41F396541E51D7FB0035A993 /* RNEditorProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNEditorProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +48,8 @@
 		41CF19091E5199970065A9CE = {
 			isa = PBXGroup;
 			children = (
+				41F396531E51D7FB0035A993 /* RNEditorProxy.h */,
+				41F396541E51D7FB0035A993 /* RNEditorProxy.m */,
 				41CF191E1E5199FA0065A9CE /* RNEditorWebView.h */,
 				41CF191F1E5199FA0065A9CE /* RNEditorWebView.m */,
 				41CF19201E5199FA0065A9CE /* RNEditorWebViewManager.h */,
@@ -117,6 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41F396551E51D7FB0035A993 /* RNEditorProxy.m in Sources */,
 				41CF19231E5199FA0065A9CE /* RNEditorWebViewManager.m in Sources */,
 				41CF19221E5199FA0065A9CE /* RNEditorWebView.m in Sources */,
 			);
@@ -250,6 +256,7 @@
 				41CF191C1E5199CA0065A9CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
