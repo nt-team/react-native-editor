@@ -8,8 +8,74 @@
 
 #import "RNEditorProxy.h"
 
+@interface RNEditorProxyResponse : NSObject<NSURLConnectionDataDelegate>
+
+@end
+
+@implementation RNEditorProxyResponse {
+    NSURLRequest* _request;
+    NSURLProtocol* _protocol;
+    NSMutableDictionary* _headers;
+    NSURLCacheStoragePolicy _cachePolicy;
+    BOOL _stopped;
+}
+
+- (void) _stopLoading {
+    _stopped = YES;
+}
+
+- (instancetype)initWithRequest:(NSURLRequest *)request protocol:(NSURLProtocol *)protocol {
+    if(self = [super init]) {
+        _request = request;
+        _protocol = protocol;
+        _headers = [NSMutableDictionary dictionary];
+        _cachePolicy = NSURLCacheStorageNotAllowed;
+    }
+    return self;
+}
+
+- (void)respondWithData:(NSData *)data mimeType:(NSString *)mimeType statusCode:(NSInteger)statusCode {
+    if (_stopped) { return; }
+    if (!_headers[@"Content-Type"]) {
+        if (!mimeType) {
+            mimeType = [self _mimeTypeOf:_protocol.request.URL.pathExtension];
+        }
+        if (mimeType) {
+            _headers[@"Content-Type"] = mimeType;
+        }
+    }
+    if (!_headers[@"Content-Length"]) {
+        _headers[@"Content-Length"] = [NSString stringWithFormat:@"%lu", (unsigned long)data.length];
+    }
+    NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] initWithURL:_protocol.request.URL statusCode:statusCode HTTPVersion:@"HTTP/1.1" headerFields:_headers];
+    [_protocol.client URLProtocol:_protocol didReceiveResponse:response cacheStoragePolicy:_cachePolicy];
+    [_protocol.client URLProtocol:_protocol didLoadData:data];
+    [_protocol.client URLProtocolDidFinishLoading:_protocol];
+}
+
+- (NSString*) _mimeTypeOf:(NSString*)pathExtension {
+    static NSDictionary* mimeTypes = nil;
+    if (mimeTypes == nil) {
+        mimeTypes = @{
+                      @"png": @"image/png",
+                      @"jpg": @"image/jpg",
+                      @"jpeg": @"image/jpg",
+                      @"woff": @"font/woff",
+                      @"ttf": @"font/opentype",
+                      @"m4a": @"audio/mp4a-latm",
+                      @"js": @"application/javascript; charset=utf-8",
+                      @"html": @"text/html; charset=utf-8"
+                      };
+    }
+    return mimeTypes[pathExtension];
+}
+
+@end
+
 
 @interface RNEditorProxyProtocol : NSURLProtocol
+
+@property (strong,nonatomic) RNEditorProxyResponse* proxyResponse;
 
 @end
 
@@ -18,6 +84,7 @@
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
+    // TODO: check if from RNEditor, check if loop, check if assets
     return YES;
 }
 
@@ -32,6 +99,8 @@
 - (instancetype)initWithRequest:(NSURLRequest *)request cachedResponse:(NSCachedURLResponse *)cachedResponse client:(id<NSURLProtocolClient>)client {
     if (self = [super initWithRequest:request cachedResponse:cachedResponse client:client]) {
         _correctedRequest = request.mutableCopy;
+        
+        self.proxyResponse = [[RNEditorProxyResponse alloc] initWithRequest:request protocol:self];
     }
     return self;
 }
@@ -42,6 +111,8 @@
 
 - (void)stopLoading {
     _correctedRequest = nil;
+    [self.proxyResponse _stopLoading];
+    self.proxyResponse = nil;
 }
 
 @end
