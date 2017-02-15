@@ -7,6 +7,10 @@
 //
 
 #import "RNEditorProxy.h"
+#import <React/RCTImageLoader.h>
+#import <React/RCTBridge.h>
+
+static RCTBridge* _bridge;
 
 @interface RNEditorProxyResponse : NSObject<NSURLConnectionDataDelegate>
 
@@ -106,7 +110,11 @@
 }
 
 - (void)startLoading {
-    
+    // TODO: proxy
+    [_bridge.imageLoader loadImageWithURLRequest:_correctedRequest callback:^(NSError *error, UIImage *image) {
+        NSData* imageData = UIImagePNGRepresentation(image);
+        [self.proxyResponse respondWithData:imageData mimeType:@"image/png" statusCode:200];
+    }];
 }
 
 - (void)stopLoading {
@@ -120,7 +128,8 @@
 
 @implementation RNEditorProxy
 
-+ (void)initialize {
++ (void)initializeWithBridge:(RCTBridge *)bridge {
+    _bridge = bridge;
     [NSURLProtocol registerClass:[RNEditorProxyProtocol class]];
 }
 
