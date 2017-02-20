@@ -8,7 +8,6 @@
 
 #import "RNEditorProxy.h"
 #import <React/RCTImageLoader.h>
-#import <React/RCTBridge.h>
 
 static RCTBridge* _bridge;
 
@@ -89,7 +88,12 @@ static RCTBridge* _bridge;
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     // TODO: check if from RNEditor, check if loop, check if assets
-    return YES;
+    // assets-library://
+    if ([request.URL.absoluteString hasPrefix:@"assets-library://"]) {
+        NSLog(request.URL.absoluteString);
+        return YES;
+    }
+    return NO;
 }
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {

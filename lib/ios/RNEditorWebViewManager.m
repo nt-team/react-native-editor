@@ -16,6 +16,7 @@
 #import <React/RCTUIManager.h>
 #import "RNEditorWebView.h"
 #import <React/UIView+React.h>
+#import "RNEditorProxy.h"
 
 @interface RNEditorWebViewManager () <RNEditorWebViewDelegate>
 
@@ -27,12 +28,15 @@
   BOOL _shouldStartLoad;
 }
 
+@synthesize bridge = _bridge;
+
 RCT_EXPORT_MODULE()
 
 - (UIView *)view
 {
   RNEditorWebView *webView = [RNEditorWebView new];
   webView.delegate = self;
+  [RNEditorProxy initializeWithBridge:_bridge];
   return webView;
 }
 

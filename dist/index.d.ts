@@ -5,6 +5,9 @@
  * @flow
  */
 import * as React from 'react';
+import RNEditor from './component';
 export default class RNEditorDev extends React.Component<any, any> {
+    editor: RNEditor;
+    componentDidMount(): void;
     render(): JSX.JSXElement;
 }

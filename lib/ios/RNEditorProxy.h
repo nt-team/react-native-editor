@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <React/RCTBridge.h>
+
 
 @interface RNEditorProxy : NSObject
+
++ (void)initializeWithBridge:(RCTBridge *)bridge;
 
 @end
