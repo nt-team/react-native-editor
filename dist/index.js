@@ -15,8 +15,8 @@ class RNEditorDev extends React.Component {
             first: 50
         })
             .then((data) => {
-            console.log(data);
             setTimeout(() => {
+                console.warn('setting');
                 data.edges.forEach((edge) => {
                     this.editor.insertImage(edge.node.image.uri);
                 });

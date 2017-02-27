@@ -24,8 +24,8 @@ export default class RNEditorDev
       first: 50
     })
       .then((data: any) => {
-        console.log(data)
         setTimeout(() => {
+          console.warn('setting')
           data.edges.forEach((edge: any) => {
             this.editor.insertImage(edge.node.image.uri)
           })

@@ -10,6 +10,8 @@
 #import <React/RCTImageLoader.h>
 
 static RCTBridge* _bridge;
+static NSPredicate* webViewUserAgentTest;
+static NSPredicate* webViewProxyLoopDetection;
 
 @interface RNEditorProxyResponse : NSObject<NSURLConnectionDataDelegate>
 
@@ -107,7 +109,14 @@ static RCTBridge* _bridge;
 - (instancetype)initWithRequest:(NSURLRequest *)request cachedResponse:(NSCachedURLResponse *)cachedResponse client:(id<NSURLProtocolClient>)client {
     if (self = [super initWithRequest:request cachedResponse:cachedResponse client:client]) {
         _correctedRequest = request.mutableCopy;
-        
+        NSString* correctedFragment;
+        if (_correctedRequest.URL.fragment) {
+            correctedFragment = @"__rneditorproxy__";
+        } else {
+            correctedFragment = @"#__rneditorproxy__";
+        }
+        _correctedRequest.URL = [NSURL URLWithString:[request.URL.absoluteString stringByAppendingString:correctedFragment]];
+
         self.proxyResponse = [[RNEditorProxyResponse alloc] initWithRequest:request protocol:self];
     }
     return self;
@@ -134,6 +143,8 @@ static RCTBridge* _bridge;
 
 + (void)initializeWithBridge:(RCTBridge *)bridge {
     _bridge = bridge;
+    webViewUserAgentTest = [NSPredicate predicateWithFormat:@"self MATCHES '^Mozilla.*Mac OS X.*'"];
+    webViewProxyLoopDetection = [NSPredicate predicateWithFormat:@"self.fragment ENDSWITH '__rneditorproxy__'"];
     [NSURLProtocol registerClass:[RNEditorProxyProtocol class]];
 }
 
