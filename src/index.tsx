@@ -19,13 +19,13 @@ export default class RNEditorDev
   editor: RNEditor
   componentDidMount() {
     CameraRoll.getPhotos({
-      groupTypes: 'All',
+      // groupTypes: 'All',
       assetType: 'All',
       first: 50
     })
       .then((data: any) => {
+        console.log(data)
         setTimeout(() => {
-          console.warn('setting')
           data.edges.forEach((edge: any) => {
             this.editor.insertImage(edge.node.image.uri)
           })

@@ -10,13 +10,13 @@ const component_1 = require("./component");
 class RNEditorDev extends React.Component {
     componentDidMount() {
         react_native_1.CameraRoll.getPhotos({
-            groupTypes: 'All',
+            // groupTypes: 'All',
             assetType: 'All',
             first: 50
         })
             .then((data) => {
+            console.log(data);
             setTimeout(() => {
-                console.warn('setting');
                 data.edges.forEach((edge) => {
                     this.editor.insertImage(edge.node.image.uri);
                 });

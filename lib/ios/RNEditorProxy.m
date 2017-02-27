@@ -91,6 +91,9 @@ static NSPredicate* webViewProxyLoopDetection;
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     // TODO: check if from RNEditor, check if loop, check if assets
     // assets-library://
+    NSString* userAgent = request.allHTTPHeaderFields[@"User-Agent"];
+    if (userAgent && ![webViewUserAgentTest evaluateWithObject:userAgent]) { return NO; }
+    if ([webViewProxyLoopDetection evaluateWithObject:request.URL]) { return NO; }
     if ([request.URL.absoluteString hasPrefix:@"assets-library://"]) {
         NSLog(request.URL.absoluteString);
         return YES;

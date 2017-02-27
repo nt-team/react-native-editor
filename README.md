@@ -137,4 +137,4 @@ node_modules/react-native-editor/lib/ios/
 
 ## TODO
 
-- [ ] 支持React Native Camara Roll选择离线图片、视频
+- [ ] 安卓支持React Native Camara Roll选择离线图片、视频
