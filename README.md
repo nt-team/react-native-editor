@@ -52,10 +52,12 @@ const styles = StyleSheet.create({
 
 > 如果是在iOS项目中，需要先引入native模块
 
-将`node_modules/react-native-editor/lib/ios/`中的四个文件，引入到你的iOS工程中。
+将`node_modules/react-native-editor/lib/ios/`中的六个文件，引入到你的iOS工程中。
 
 ``` javascript
 node_modules/react-native-editor/lib/ios/
+|-- RNEditorProxy.h
+|-- RNEditorProxy.m
 |-- RNEditorWebView.h
 |-- RNEditorWebView.m
 |-- RNEditorWebViewManager.h
